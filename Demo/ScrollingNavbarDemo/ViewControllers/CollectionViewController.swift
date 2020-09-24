@@ -10,7 +10,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     super.viewDidLoad()
 
     title = "CollectionView"
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(reproduceBug))
     navigationController?.navigationBar.barTintColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.minimumInteritemSpacing = 1;
@@ -20,6 +20,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     flowLayout.scrollDirection = .vertical
     collectionView?.collectionViewLayout = flowLayout
     //        collectionView?.contentInset = UIEdgeInsetsMake(44, 0, 0, 0)
+  }
+  
+  @objc func reproduceBug() {
+    // this reproduce the bug
+    print(navigationController?.bottomLayoutGuide.length)
+    
+    // this works well
+    // print(navigationController?.view.safeAreaInsets.bottom)
   }
 
   // Enable the navbar scrolling
